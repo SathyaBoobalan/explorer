@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sathya | Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at 20% 20%, #000010, #000020, #000010);
+      overflow-x: hidden;
+    }
+
+    /* Glowing Header */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(90deg, rgba(255, 0, 50, 0.3), rgba(0, 0, 0, 0.5), rgba(255, 0, 50, 0.3));
+      box-shadow: 0 0 25px rgba(255, 0, 50, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      color: #ff0032;
+      text-shadow: 0 0 15px #ff0032, 0 0 40px #ff0032;
+      animation: flicker 2.5s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.3em;
+      color: #ddd;
+      margin-top: 10px;
+    }
+
+    /* Smooth flicker animation */
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.3;
+      }
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background: rgba(20, 20, 40, 0.9);
+      padding: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ff6685;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      color: #fff;
+      background: rgba(255, 0, 50, 0.4);
+      box-shadow: 0 0 10px #ff0032;
+    }
+
+    section {
+      padding: 60px 25px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      margin: 40px auto;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 0, 50, 0.15);
+    }
+
+    section h2 {
+      font-size: 2.5em;
+      color: #ff0032;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px #ff0032;
+    }
+
+    section p {
+      color: #ccc;
+      font-size: 1.1em;
+      line-height: 1.6em;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 0, 50, 0.1);
+      color: #ccc;
+      font-size: 0.95em;
+      letter-spacing: 0.5px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Floating Glow Button */
+    .top-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 25px;
+      background: #ff0032;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff0032;
+      font-size: 1.4em;
+      transition: 0.3s;
+    }
+
+    .top-btn:hover {
+      background: #ff335c;
+      box-shadow: 0 0 25px #ff0032;
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.3em;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      section h2 {
+        font-size: 2em;
+      }
+
+      section p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="home">
+    <h1>Hey, I'm Sathya</h1>
+    <p>A passionate explorer | Music lover | Guitarist 🎸</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#hobby">Hobby</a>
+    <a href="#explore">Explore</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Sathya — someone who believes in chasing creativity and joy.  
+      Whether it's through rhythm, adventure, or discovering new things, I live life with passion and curiosity.
+    </p>
+  </section>
+
+  <section id="hobby">
+    <h2>My Hobby</h2>
+    <p>
+      Music keeps me alive. Playing the guitar helps me express what words sometimes can't.  
+      Every tune is a story, and every note is an emotion.
+    </p>
+  </section>
+
+  <section id="explore">
+    <h2>What I Explore</h2>
+    <p>
+      I love exploring the beauty of cities, sounds, and souls.  
+      New experiences are the real treasures that inspire me every day.
+    </p>
+  </section>
+
+  <section id="showcase">
+    <h2>Showcase</h2>
+    <p>
+      A glimpse of the city I love — vibrant lights, endless stories, and timeless memories.  
+      <br /><br />
+      <img src="https://images.unsplash.com/photo-1526404428533-40f5b09c5c36?auto=format&fit=crop&w=800&q=80" 
+           alt="Beautiful City"
+           style="border-radius: 10px; width: 100%; max-width: 600px; box-shadow: 0 0 25px rgba(255,0,50,0.3);">
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>
+      Let’s connect for creative vibes or musical chats! 🎶  
+      <br /><br />
+      <a href="mailto:Sathya@example.com" style="color: #ff6685; text-decoration: none;">📧 Sathya@example.com</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Sathya — Crafted with ❤️ and a glowing touch.
+  </footer>
+
+  <button class="top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+</body>
+</html>
