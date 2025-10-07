@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sathya | Portfolio</title>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
 
     * {
       margin: 0;
@@ -15,217 +16,453 @@
     }
 
     body {
-      font-family: 'Raleway', sans-serif;
-      color: #fff;
-      background: radial-gradient(circle at 20% 20%, #000010, #000020, #000010);
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg,#0c0012,#1a001f);
+      color: #eaeaea;
       overflow-x: hidden;
+      background-attachment: fixed;
+      min-height: 100vh;
     }
 
-    /* Glowing Header */
     header {
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(90deg, rgba(255, 0, 50, 0.3), rgba(0, 0, 0, 0.5), rgba(255, 0, 50, 0.3));
-      box-shadow: 0 0 25px rgba(255, 0, 50, 0.3);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 70px 20px 40px;
+      background: linear-gradient(135deg, rgba(255, 0, 60, 0.3), rgba(0,0,0,0.7), rgba(255,0,60,0.3));
+      box-shadow: 0 0 30px rgba(255,0,60,0.4);
     }
 
     header h1 {
-      font-size: 3.5em;
-      color: #ff0032;
-      text-shadow: 0 0 15px #ff0032, 0 0 40px #ff0032;
-      animation: flicker 2.5s infinite alternate;
+      font-size: 3em;
+      color: #ff004c;
+      text-shadow: 0 0 25px #ff004c, 0 0 60px #ff004c;
+      animation: pulse 2s infinite alternate;
     }
 
     header p {
-      font-size: 1.3em;
-      color: #ddd;
-      margin-top: 10px;
+      font-size: 1.15em;
+      color: #ccc;
+      margin-top: 12px;
     }
 
-    /* Smooth flicker animation */
-    @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.3;
-      }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #ff004c, 0 0 25px #ff004c; }
+      100% { text-shadow: 0 0 25px #ff004c, 0 0 60px #ff004c; }
     }
 
-    /* Navigation Bar */
     nav {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      background: rgba(20, 20, 40, 0.9);
-      padding: 12px;
+      gap: 25px;
+      background: rgba(15,15,35,0.95);
+      backdrop-filter: blur(8px);
+      padding: 14px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(6px);
+      z-index: 10;
+      box-shadow: 0 0 20px rgba(255,0,60,0.2);
+      flex-wrap: wrap;
     }
 
     nav a {
+      color: #ff668a;
       text-decoration: none;
-      color: #ff6685;
       font-weight: 600;
       letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-      padding: 5px 10px;
-      border-radius: 6px;
-    }
-
-    nav a:hover {
-      color: #fff;
-      background: rgba(255, 0, 50, 0.4);
-      box-shadow: 0 0 10px #ff0032;
-    }
-
-    section {
-      padding: 60px 25px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.4);
-      margin: 40px auto;
-      width: 90%;
-      max-width: 900px;
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(255, 0, 50, 0.15);
-    }
-
-    section h2 {
-      font-size: 2.5em;
-      color: #ff0032;
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px #ff0032;
-    }
-
-    section p {
-      color: #ccc;
-      font-size: 1.1em;
-      line-height: 1.6em;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255, 0, 50, 0.1);
-      color: #ccc;
-      font-size: 0.95em;
-      letter-spacing: 0.5px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Floating Glow Button */
-    .top-btn {
-      position: fixed;
-      right: 20px;
-      bottom: 25px;
-      background: #ff0032;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ff0032;
-      font-size: 1.4em;
+      padding: 8px 16px;
+      border-radius: 8px;
       transition: 0.3s;
     }
 
+    nav a:hover, nav a.active {
+      background: rgba(255,0,60,0.3);
+      color: #fff;
+      box-shadow: 0 0 15px #ff004c;
+    }
+
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 80vh;
+      padding: 60px 10%;
+      gap: 50px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+      flex-wrap: wrap;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    section:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .text-box {
+      flex: 1;
+      max-width: 550px;
+    }
+
+    .text-box h2 {
+      font-size: 2.5em;
+      color: #ff3c7f;
+      text-shadow: 0 0 15px #ff3c7f,0 0 40px rgba(255,60,127,0.4);
+      margin-bottom: 18px;
+      animation: glow 2.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow:0 0 10px #ff3c7f,0 0 20px #ff004c,0 0 30px #ff668a; }
+      50% { text-shadow:0 0 20px #ff3c7f,0 0 35px #ff004c,0 0 50px #ff668a; }
+      100% { text-shadow:0 0 10px #ff3c7f,0 0 20px #ff004c,0 0 30px #ff668a; }
+    }
+
+    .text-box p {
+      font-size: 1.05em;
+      line-height: 1.7em;
+      color: #d0d0d0;
+    }
+
+    .text-box ul {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .text-box ul li {
+      margin-bottom: 10px;
+      font-weight: 500;
+      position: relative;
+      padding-left: 28px;
+      color: #ff88a1;
+      transition: 0.3s;
+      cursor: default;
+    }
+
+    .text-box ul li::before {
+      content:"★";
+      position: absolute;
+      left: 0;
+      color: #ff3c7f;
+      font-size: 1.2em;
+      text-shadow: 0 0 10px #ff3c7f;
+    }
+
+    .text-box ul li::after {
+      content:"✨";
+      position: absolute;
+      left: -20px;
+      opacity: 0;
+      font-size: 1em;
+      transition: 0.5s;
+    }
+
+    .text-box ul li:hover::after {
+      left: -10px;
+      opacity: 1;
+      animation: sparkle 0.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+      50% { transform: scale(1.3) rotate(15deg); opacity: 1; }
+      100% { transform: scale(1) rotate(-10deg); opacity: 0.8; }
+    }
+
+    .text-box ul li:hover {
+      color: #fff;
+    }
+
+    .image-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
+
+    .image-box img,
+    .image-box iframe {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255,60,127,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .image-box img:hover,
+    .image-box iframe:hover {
+      transform: scale(1.08) rotateY(3deg) rotateX(2deg);
+      box-shadow: 0 0 60px #ff3c7f,0 0 100px rgba(255,100,150,0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.95em;
+      color: #aaa;
+      letter-spacing: 0.5px;
+      background: rgba(255,60,127,0.05);
+    }
+
+    .top-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      background: #ff3c7f;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 25px #ff3c7f;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      animation: bounce 0.8s infinite alternate;
+    }
+
     .top-btn:hover {
-      background: #ff335c;
-      box-shadow: 0 0 25px #ff0032;
-      transform: scale(1.1);
+      transform: scale(1.15);
+      background: #ff668a;
+      box-shadow: 0 0 40px #ff3c7f;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.3em;
-      }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
 
-      nav {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
+    .youtube-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 1.1em;
+      color: #fff;
+      background: #ff3c7f;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(255,60,127,0.6);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
 
-      section h2 {
-        font-size: 2em;
-      }
+    .youtube-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255,60,127,0.8);
+      background: linear-gradient(135deg,#ff004c,#ff668a);
+    }
 
-      section p {
+    @media(max-width:900px){
+      section { flex-direction: column; text-align: center; padding: 50px 8%; }
+      .image-box img, .image-box iframe { max-width: 320px; }
+      .text-box h2 { font-size: 2em; }
+      .text-box p { font-size: 0.95em; }
+    }
+
+    @media(max-width:768px){
+      .youtube-btn {
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        margin: 20px auto 0;
         font-size: 1em;
+        padding: 14px 0;
+      }
+      nav { gap: 10px; }
+    }
+
+    @media(max-width:900px){
+      section {
+        flex-direction: column !important;
+        text-align: center;
+      }
+      .image-box {
+        margin-top: 20px;
       }
     }
+
+    html {
+      scroll-padding-top: 80px;
+      scroll-behavior: smooth;
+    }
+
+    @media(max-width:768px){
+      html { scroll-padding-top: 100px; }
+    }
+
   </style>
 </head>
 
 <body>
-  <header id="home">
+  <header>
     <h1>Hey, I'm Sathya</h1>
-    <p>A passionate explorer | Music lover | Guitarist 🎸</p>
+    <p>A passionate explorer | Vibeah | Animator</p>
   </header>
 
-  <nav>
+  <nav id="navbar">
     <a href="#about">About</a>
-    <a href="#hobby">Hobby</a>
-    <a href="#explore">Explore</a>
-    <a href="#showcase">Showcase</a>
+    <a href="#skills">Hobby</a>
+    <a href="#explore-new">Explorer</a>
+    <a href="#songs">Vibeah</a>
+    <a href="#youtube">Animator</a>
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- ABOUT -->
   <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm Sathya — someone who believes in chasing creativity and joy.  
-      Whether it's through rhythm, adventure, or discovering new things, I live life with passion and curiosity.
-    </p>
+    <div class="text-box">
+      <h2>About Me</h2>
+      <p>I'm Sathya — a creative soul who believes in exploring ideas and animation.  
+      I craft stories through visuals, sound, and imagination, living life with passion and curiosity.</p>
+    </div>
+    <div class="image-box">
+      <img src="./imgs/aboutme.jpg" alt="About Me">
+    </div>
   </section>
 
-  <section id="hobby">
-    <h2>My Hobby</h2>
-    <p>
-      Music keeps me alive. Playing the guitar helps me express what words sometimes can't.  
-      Every tune is a story, and every note is an emotion.
-    </p>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="text-box">
+      <h2>Hobby</h2>
+      <p>I combine vibes, visuals, and digital storytelling to create immersive experiences.</p>
+      <ul>
+        <li>🎨 2D Digital Animation & Thriller Stories</li>
+        <li>🎶 Riding the Vijay Antony Vibes</li>
+        <li>🌍 Exploring the World & Places</li>
+        <li>🎥 Video Editing</li>
+      </ul>
+    </div>
+    <div class="image-box">
+      <img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg" alt="Skills">
+    </div>
   </section>
 
-  <section id="explore">
-    <h2>What I Explore</h2>
-    <p>
-      I love exploring the beauty of cities, sounds, and souls.  
-      New experiences are the real treasures that inspire me every day.
-    </p>
+  <!-- EXPLORER -->
+  <section id="explore-new">
+    <div class="text-box">
+      <h2>Explorer</h2>
+      <p>I love discovering new ideas and places. Every experience sparks inspiration for my story creations.</p>
+    </div>
+    <div class="image-box">
+      <img src="https://images.pexels.com/photos/12167618/pexels-photo-12167618.jpeg" alt="Explore Creativity">
+    </div>
   </section>
 
-  <section id="showcase">
-    <h2>Showcase</h2>
-    <p>
-      A glimpse of the city I love — vibrant lights, endless stories, and timeless memories.  
-      <br /><br />
-      <img src="https://images.unsplash.com/photo-1526404428533-40f5b09c5c36?auto=format&fit=crop&w=800&q=80" 
-           alt="Beautiful City"
-           style="border-radius: 10px; width: 100%; max-width: 600px; box-shadow: 0 0 25px rgba(255,0,50,0.3);">
-    </p>
+  <!-- SONGS -->
+  <section id="songs">
+    <div class="text-box">
+      <h2>Vijay Antony Vibes</h2>
+      <p>Vibing to songs that electrify the mood and set the energy high.</p>
+      <ul>
+        <li>🎧 Lost in the beats & rhythm</li>
+        <li>🎶 Riding the energy wave</li>
+        <li>⚡ Pure thrill of the vibe</li>
+      </ul>
+    </div>
+    <div class="image-box">
+      <img src="https://cdn.platinumlist.net/upload/artist/vijay_antony_2260-orig1705908335.jpeg" alt="Vijay Antony Live Performance">
+    </div>
   </section>
 
+  <!-- YOUTUBE CHANNEL -->
+  <section id="youtube">
+    <div class="text-box">
+      <h2>Animator on YouTube</h2>
+      <p>I create digital thriller animations telling stories as I imagine them. Watch the journey unfold — the next part is coming soon!</p>
+      <br>
+      <a href="https://www.youtube.com/@WhiteInkAnimation" target="_blank" class="youtube-btn">
+        Discover My Channel →
+      </a>
+    </div>
+    <div class="image-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/5ALY1kBOSdw" 
+        title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact Me</h2>
-    <p>
-      Let’s connect for creative vibes or musical chats! 🎶  
-      <br /><br />
-      <a href="mailto:Sathya@example.com" style="color: #ff6685; text-decoration: none;">📧 Sathya@example.com</a>
-    </p>
+    <div class="text-box">
+      <h2>Contact Me</h2>
+      <p>Let's connect and create thrilling visuals together! 🎨✨</p>
+      <br>
+      <p>
+        🎬 <a href="https://www.youtube.com/@WhiteInkAnimation" target="_blank">YouTube: @WhiteInkAnimation</a><br>
+        📸 <a href="https://www.instagram.com/whiteinkanimation" target="_blank">Instagram: @whiteinkanimation</a>
+      </p>
+    </div>
+    <div class="image-box">
+      <img src="https://images.pexels.com/photos/5052875/pexels-photo-5052875.jpeg" alt="Contact">
+    </div>
   </section>
 
-  <footer>
-    © 2025 Sathya — Crafted with ❤️ and a glowing touch.
-  </footer>
+  <footer>© 2025 Sathya — Crafted with ❤️ and imagination.</footer>
+  <button class="top-btn" id="topBtn">↑</button>
 
-  <button class="top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+  <script>
+    const sections = document.querySelectorAll('section');
+    const topBtn = document.getElementById('topBtn');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const text = entry.target.querySelector('.text-box');
+          const img = entry.target.querySelector('.image-box');
+          if(text) text.style.transitionDelay = '0.2s';
+          if(img) img.style.transitionDelay = '0.4s';
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (pageYOffset >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if(a.getAttribute('href') === `#${current}`) a.classList.add('active');
+      });
+
+      if(window.scrollY > 500) topBtn.classList.add('visible'); 
+      else topBtn.classList.remove('visible');
+    });
+
+    topBtn.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
+
+    document.querySelectorAll('ul li').forEach(item => {
+      item.addEventListener('mouseenter', ()=> item.style.color='#fff');
+      item.addEventListener('mouseleave', ()=> item.style.color='#ff88a1');
+    });
+
+    document.querySelectorAll('.image-box img').forEach(img => {
+      img.addEventListener('mousemove', e => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width/2;
+        const cy = rect.height/2;
+        const dx = (x-cx)/cx;
+        const dy = (y-cy)/cy;
+        img.style.transform = `rotateY(${dx*10}deg) rotateX(${-dy*10}deg) scale(1.08)`;
+      });
+      img.addEventListener('mouseleave', ()=> img.style.transform='scale(1.08)');
+    });
+  </script>
 </body>
 </html>
