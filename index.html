@@ -397,23 +397,26 @@
   
     sections.forEach(sec => observer.observe(sec));  
   
-    window.addEventListener('scroll', () => {  
-      let current = '';  
-      sections.forEach(section => {  
-        const top = section.offsetTop - 120;  
-        if (pageYOffset >= top) current = section.getAttribute('id');  
-      });  
-      navLinks.forEach(a => {  
-        a.classList.remove('active');  
-        if(a.getAttribute('href') === #${current}) a.classList.add('active');  
-      });  
-  
-      if(window.scrollY > 500) topBtn.classList.add('visible');   
-      else topBtn.classList.remove('visible');  
-    });  
-  
-    topBtn.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));  
-  
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 150;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+
+  // Top button visibility
+  if (window.scrollY > 500) topBtn.classList.add('visible');
+  else topBtn.classList.remove('visible');
+});
     document.querySelectorAll('ul li').forEach(item => {  
       item.addEventListener('mouseenter', ()=> item.style.color='#fff');  
       item.addEventListener('mouseleave', ()=> item.style.color='#ff88a1');  
