@@ -13,6 +13,7 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
+      will-change: transform, opacity;
     }
 
     body {
@@ -88,7 +89,7 @@
       gap: 50px;
       opacity: 0;
       transform: translateY(60px);
-      transition: all 1s ease;
+      transition: all 0.6s ease-out;
       flex-wrap: wrap;
     }
 
@@ -194,7 +195,7 @@
 
     .image-box img:hover,
     .image-box iframe:hover {
-      transform: scale(1.08) rotateY(3deg) rotateX(2deg);
+      transform: scale(1.05);
       box-shadow: 0 0 60px #ff3c7f,0 0 100px rgba(255,100,150,0.5);
     }
 
@@ -281,16 +282,6 @@
       nav { gap: 10px; }
     }
 
-    @media(max-width:900px){
-      section {
-        flex-direction: column !important;
-        text-align: center;
-      }
-      .image-box {
-        margin-top: 20px;
-      }
-    }
-
     html {
       scroll-padding-top: 80px;
       scroll-behavior: smooth;
@@ -369,7 +360,7 @@
       </ul>
     </div>
     <div class="image-box">
-      <img src="https://cdn.platinumlist.net/upload/artist/vijay_antony_2260-orig1705908335.jpeg" alt="Vijay Antony Live Performance">
+      <img src="https://cdn.platinumlist.net/upload/artist/vijayantony2260-orig1705908335.jpeg" alt="Vijay Antony Live Performance">
     </div>
   </section>
 
@@ -413,54 +404,59 @@
     const topBtn = document.getElementById('topBtn');
     const navLinks = document.querySelectorAll('nav a');
 
+    // Section fade-in on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          const text = entry.target.querySelector('.text-box');
-          const img = entry.target.querySelector('.image-box');
-          if(text) text.style.transitionDelay = '0.2s';
-          if(img) img.style.transitionDelay = '0.4s';
-        }
+        if(entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
-
     sections.forEach(sec => observer.observe(sec));
 
+    // Throttled scroll listener
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        if (pageYOffset >= top) current = section.getAttribute('id');
-      });
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if(a.getAttribute('href') === `#${current}`) a.classList.add('active');
-      });
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          let current = '';
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            if (scrollY >= sectionTop) current = section.getAttribute('id');
+          });
 
-      if(window.scrollY > 500) topBtn.classList.add('visible'); 
-      else topBtn.classList.remove('visible');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+              link.classList.add('active');
+            }
+          });
+
+          if (window.scrollY > 500) topBtn.classList.add('visible');
+          else topBtn.classList.remove('visible');
+
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
 
+    // Smooth scroll to top
     topBtn.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
 
-    document.querySelectorAll('ul li').forEach(item => {
-      item.addEventListener('mouseenter', ()=> item.style.color='#fff');
-      item.addEventListener('mouseleave', ()=> item.style.color='#ff88a1');
-    });
-
+    // Image tilt effect (lightweight)
     document.querySelectorAll('.image-box img').forEach(img => {
       img.addEventListener('mousemove', e => {
         const rect = img.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const cx = rect.width/2;
-        const cy = rect.height/2;
-        const dx = (x-cx)/cx;
-        const dy = (y-cy)/cy;
-        img.style.transform = `rotateY(${dx*10}deg) rotateX(${-dy*10}deg) scale(1.08)`;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const dx = (x - cx) / cx;
+        const dy = (y - cy) / cy;
+        img.style.transform = `rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg) scale(1.05)`;
       });
-      img.addEventListener('mouseleave', ()=> img.style.transform='scale(1.08)');
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1.05)';
+      });
     });
   </script>
 </body>
