@@ -410,6 +410,15 @@ section:nth-child(even) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+    // Remove stuck active/hover styles on mobile
+navLinks.forEach(link => {
+  link.addEventListener('touchend', () => {
+    setTimeout(() => {
+      link.blur();
+    }, 100);
+  });
+});
+
   </script>
 </body>
 </html>
