@@ -259,6 +259,18 @@ section:nth-child(even) {
     html {
       scroll-padding-top: 80px;
     }
+
+/* Remove pressed effect on mobile but keep active scroll glow */
+@media (hover: none) and (pointer: coarse) {
+  nav a:active,
+  nav a:focus {
+    background: none !important;
+    box-shadow: none !important;
+    color: #ff668a !important; /* normal color */
+    outline: none;
+  }
+}
+
   </style>
 </head>
 
