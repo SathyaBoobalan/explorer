@@ -79,6 +79,15 @@
       box-shadow: 0 0 10px #ff004c;
     }
 
+    /* Prevent mobile browsers from keeping nav buttons stuck */
+nav a:focus, nav a:active {
+  outline: none;
+}
+nav a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
   section {
   display: flex;
   flex-direction: column; /* force text above image */
