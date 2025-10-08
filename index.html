@@ -101,23 +101,27 @@
 
   .text-box ul { list-style: none; margin-top: 18px; }
 
-  .text-box ul li {
-    margin-bottom: 10px;
-    font-weight: 500;
-    position: relative;
-    padding-left: 28px;
-    color: #ff88a1;
-    cursor: default;
-  }
+.text-box ul li {
+  margin-bottom: 10px;
+  font-weight: 500;
+  position: relative;
+  padding-left: 32px; /* a little more padding for the star */
+  color: #ff88a1;
+  cursor: default;
+  line-height: 1.5em; /* ensure proper line height */
+}
 
-  .text-box ul li::before {
-    content:"★";
-    position: absolute;
-    left: 0;
-    color: #ff3c7f;
-    font-size: 1.2em;
-    text-shadow: 0 0 10px #ff3c7f;
-  }
+.text-box ul li::before {
+  content:"★";
+  position: absolute;
+  left: 0;
+  top: 50%;       /* align middle of star with text */
+  transform: translateY(-50%); /* perfect vertical centering */
+  color: #ff3c7f;
+  font-size: 1.2em;
+  text-shadow: 0 0 10px #ff3c7f;
+}
+
 
   .text-box ul li:hover { color: #fff; transition: color 0.3s; }
 
