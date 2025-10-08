@@ -71,6 +71,7 @@
       padding: 8px 16px;
       border-radius: 8px;
       transition: 0.3s;
+      -webkit-tap-highlight-color: transparent;
     }
 
     nav a:hover, nav a.active {
@@ -79,39 +80,44 @@
       box-shadow: 0 0 10px #ff004c;
     }
 
-    /* Prevent mobile browsers from keeping nav buttons stuck */
-nav a:focus, nav a:active {
-  outline: none;
-}
-nav a {
-  -webkit-tap-highlight-color: transparent;
-}
+    nav a:focus,
+    nav a:active {
+      outline: none;
+    }
 
+    /* Remove pressed effect on mobile but keep active scroll glow */
+    @media (hover: none) and (pointer: coarse) {
+      nav a:active,
+      nav a:focus {
+        background: none !important;
+        box-shadow: none !important;
+        color: #ff668a !important;
+        outline: none;
+      }
+    }
 
-  section {
-  display: flex;
-  flex-direction: column; /* force text above image */
-  align-items: center;
-  justify-content: flex-start;
-  min-height: auto; /* let height fit content */
-  padding: 60px 10%;
-  gap: 30px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
-  flex-wrap: wrap;
-}
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: auto;
+      padding: 60px 10%;
+      gap: 30px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      flex-wrap: wrap;
+    }
 
-
-section:nth-child(even) {
-  flex-direction: column; /* override row-reverse */
-}
+    section:nth-child(even) {
+      flex-direction: column;
+    }
 
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
 
     .text-box {
       flex: 1;
@@ -159,13 +165,14 @@ section:nth-child(even) {
       transition: color 0.3s;
     }
 
- .image-box {
-  flex: none; /* don’t stretch */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 800px;
-}
+    .image-box {
+      flex: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 800px;
+    }
+
     .image-box img,
     .image-box iframe {
       width: 100%;
@@ -177,7 +184,6 @@ section:nth-child(even) {
       display: block;
     }
 
-    /* Remove heavy hover on mobile */
     @media(max-width:900px){
       .image-box img:hover,
       .image-box iframe:hover {
@@ -259,18 +265,6 @@ section:nth-child(even) {
     html {
       scroll-padding-top: 80px;
     }
-
-/* Remove pressed effect on mobile but keep active scroll glow */
-@media (hover: none) and (pointer: coarse) {
-  nav a:active,
-  nav a:focus {
-    background: none !important;
-    box-shadow: none !important;
-    color: #ff668a !important; /* normal color */
-    outline: none;
-  }
-}
-
   </style>
 </head>
 
@@ -422,15 +416,15 @@ section:nth-child(even) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
-    // Remove stuck active/hover styles on mobile
-navLinks.forEach(link => {
-  link.addEventListener('touchend', () => {
-    setTimeout(() => {
-      link.blur();
-    }, 100);
-  });
-});
 
+    // Remove stuck active/hover styles on mobile after tap
+    navLinks.forEach(link => {
+      link.addEventListener('touchend', () => {
+        setTimeout(() => {
+          link.blur();
+        }, 100);
+      });
+    });
   </script>
 </body>
 </html>
